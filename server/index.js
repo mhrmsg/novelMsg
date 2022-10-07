@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
-const router =  require('./dao/routes/router')
-const connectDB = require('./dao/config/db')
+const router =  require('./routes/router')
+const connectDB = require('./config/db')
 
 //加载环境变量
 dotenv.config({ 
