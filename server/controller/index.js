@@ -1,4 +1,4 @@
-const novelInfoModel = require('../model/novelInfoSchema')
+const novelInfoModel = require('../dao/model/novelInfoSchema')
 
 exports.commonResGet=async (req,res,nex)=>{
     let json=await novelInfoModel.find();
