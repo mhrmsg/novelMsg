@@ -10,4 +10,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      "^/novel": {
+        target: "http://127.0.0.1:3000/novel",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/novel/, ""),
+      },
+    },
+  },
 });

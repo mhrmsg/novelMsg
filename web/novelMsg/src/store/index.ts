@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { getAllNovelData } from "@/service/main";
 
 //定义容器
 export const useMainStore = defineStore("main", {

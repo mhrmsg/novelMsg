@@ -4,11 +4,14 @@
   >
     <NavHeader class="w-full max-h-12 flex-none h-14"></NavHeader>
     <div class="stack flex-auto pb-20">
-      <Transition name="slide-fade">
-        <PageCard v-if="show"></PageCard>
+      <!-- <Transition name="slide-fade">
+        <PageCard v-if="show" :item=""></PageCard>
       </Transition>
       <PageCard></PageCard>
-      <PageCard></PageCard>
+      <PageCard></PageCard> -->
+      <div v-for="item in store.pageDataRandom">
+        <PageCard :novelData="item"></PageCard>
+      </div>
     </div>
     <div class="m-auto flex-1">
       <div class="btn-group grid grid-cols-2">
@@ -22,11 +25,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onBeforeMount } from "vue";
 import NavHeader from "@/components/nav-header";
 import PageCard from "@/components/page-card";
+import { useMainContentStore } from "@/store/main/index";
+import { storeToRefs } from "pinia";
 let show = ref(true);
-
+const store = useMainContentStore();
+store.getRandomNovelAction();
 function prevClick() {}
 
 function nextClick() {}
