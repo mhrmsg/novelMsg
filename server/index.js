@@ -18,4 +18,4 @@ app.use(express.json())
 app.use('/novel',router)
 
 
-app.listen(PORT,console.log(`server running ${process.env.PORT}`))
+app.listen(PORT,console.log(`server running ${process.env.PORT},访问 ${process.env.HOST}:${process.env.PORT} `))
