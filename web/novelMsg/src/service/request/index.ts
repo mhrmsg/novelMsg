@@ -28,6 +28,7 @@ class MYRequest {
       if (config.interceptors?.requestInterceptor) {
         config = config.interceptors.requestInterceptor(config);
       }
+
       this.instance
         .request<any, T>(config)
         .then((res) => {

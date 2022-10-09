@@ -1,4 +1,5 @@
 export interface INovel {
+  _id: string;
   book_url: string;
   book_id: string;
   image: string;

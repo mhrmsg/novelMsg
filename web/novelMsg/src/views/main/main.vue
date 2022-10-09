@@ -4,21 +4,20 @@
   >
     <NavHeader class="w-full max-h-12 flex-none h-14"></NavHeader>
     <div class="stack flex-auto pb-20">
-      <!-- <Transition name="slide-fade">
-        <PageCard v-if="show" :item=""></PageCard>
-      </Transition>
-      <PageCard></PageCard>
-      <PageCard></PageCard> -->
-      <div v-for="item in store.pageDataRandom">
-        <PageCard :novelData="item"></PageCard>
-      </div>
+      <TransitionGroup name="list">
+        <template
+          v-for="(item, index) in pageDataRandom"
+          :key="item"
+          :data-index="index"
+        >
+          <PageCard :novelData="item"></PageCard>
+        </template>
+      </TransitionGroup>
     </div>
     <div class="m-auto flex-1">
       <div class="btn-group grid grid-cols-2">
-        <button class="btn btn-outline prev" @click="show = !show">
-          Previous page
-        </button>
-        <button class="btn btn-outline next">Next</button>
+        <button class="btn btn-outline prev" @click="prevClick">Prev</button>
+        <button class="btn btn-outline next" @click="nextClick">Next</button>
       </div>
     </div>
   </div>
@@ -32,24 +31,57 @@ import { useMainContentStore } from "@/store/main/index";
 import { storeToRefs } from "pinia";
 let show = ref(true);
 const store = useMainContentStore();
-store.getRandomNovelAction();
-function prevClick() {}
 
-function nextClick() {}
+const { pageDataList, pageDataRandom } = storeToRefs(store);
+
+//记录本次的数据
+let arr = pageDataRandom;
+//记录修改的数据
+let alterArr = [] as any[];
+//点击计数
+let index = 0;
+onBeforeMount(() => {
+  store.getRandomNovelAction();
+});
+
+// 1 2 3   1 、3的时候触发边界情况，加载上一页，下一页。2的时候触发本体功能
+function prevClick() {
+  if (index === 0) {
+    store.getRandomNovelAction();
+    alterArr = [];
+  } else if (index === 1) {
+    pageDataRandom.value.unshift(alterArr[0]);
+    index--;
+  } else if (index === 2) {
+    pageDataRandom.value.unshift(alterArr[1]);
+    index--;
+  }
+}
+function nextClick() {
+  if (index === 0) {
+    const tmpdata = pageDataRandom.value.shift();
+    alterArr.push(tmpdata);
+    index++;
+  } else if (index === 1) {
+    const tmpdata = pageDataRandom.value.shift();
+    alterArr.push(tmpdata);
+    index++;
+  } else if (index === 2) {
+    alterArr = [];
+    store.getRandomNovelAction();
+    index = 0;
+  }
+}
 </script>
 
 <style scoped>
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
 }
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
+.list-enter-from,
+.list-leave-to {
+  opacity: 1;
+  transform: translateX(30px);
 }
 </style>
