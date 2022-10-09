@@ -23,9 +23,8 @@
             tabindex="0"
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li><a>Homepage</a></li>
-            <li><a>Portfolio</a></li>
-            <li><a>About</a></li>
+            <li><router-link to="/">HomPage</router-link></li>
+            <li><router-link to="/listnovel/1">NovelList</router-link></li>
           </ul>
         </div>
       </div>
@@ -57,6 +56,8 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+</script>
 
 <style scoped></style>

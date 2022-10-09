@@ -6,12 +6,10 @@
     </div>
     <div class="flex flex-col bg-base-200">
       <!-- Item  展示 ，使用 grid 布局-->
-      <div class="grid grid-cols-2 md:grid-cols-2 p-10 gap-4 overflow-hidden">
-        <PageItem class="overflow-hidden"></PageItem>
-        <PageItem class="overflow-hidden"></PageItem>
-
-        <PageItem></PageItem>
-        <PageItem></PageItem>
+      <div class="grid grid-cols-3 md:grid-cols-3 p-10 gap-4 overflow-hidden">
+        <template v-for="item in currentPageData" :key="item._id">
+          <PageItem :data="item"></PageItem>
+        </template>
       </div>
       <!-- 分页 暂时不做-->
       <div>
@@ -35,6 +33,8 @@ import PageFooter from "@/components/page-footer";
 import PagePath from "@/components/page-path";
 //分页功能
 import Pagination from "@/components/pagination";
+import { useMainContentStore } from "@/store/main/index";
+import { storeToRefs } from "pinia";
 // 获取数据
 const props = defineProps(["data"]);
 const { currentPage, totalCount, pageData } = props.data;
@@ -42,10 +42,13 @@ const { currentPage, totalCount, pageData } = props.data;
 const total = ref(0);
 const pageSize = ref(6);
 // 控制页码的变化
+const store = useMainContentStore();
+const { currentPageData } = storeToRefs(store);
+
 const changePage = (page: number) => {
   // 修改分页参数，重新调用接口即可
-  console.log(page);
   // 重新调用接口，渲染数据
+  store.getPageNoveDataAction(page, 6);
 };
 </script>
 

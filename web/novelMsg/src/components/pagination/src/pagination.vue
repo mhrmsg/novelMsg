@@ -122,12 +122,12 @@ export default {
     border-radius: 4px;
     margin-right: 10px;
     &:hover {
-      color: #27ba9b;
+      color: #3d4451;
     }
     &.active {
-      background: #27ba9b;
+      background: #3d4451;
       color: #fff;
-      border-color: #27ba9b;
+      border-color: #3d4451;
     }
     &.disabled {
       cursor: not-allowed;
