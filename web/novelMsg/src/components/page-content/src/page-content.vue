@@ -12,7 +12,7 @@
         </template>
       </div>
       <!-- 分页 暂时不做-->
-      <div>
+      <div class="p-10">
         <Pagination
           @change-page="changePage"
           :pagesize="6"
