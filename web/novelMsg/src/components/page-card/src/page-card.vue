@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card max-w-sm shadow-xl lg:h-96 md:h-96 sm:h-96 max-h-screen bg-neutral text-neutral-content"
+    class="card max-w-sm md:w-96 sm:w-96 lg:w-96 shadow-xl h-full bg-neutral text-neutral-content"
   >
     <figure v-if="showPic">
       <img alt="img" class="md:h-40 lg:h-40 md:w-auto" :src="novelData.image" />

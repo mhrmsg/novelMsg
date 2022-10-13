@@ -1,6 +1,15 @@
 <template>
-  <div class="collapse">
-    <input type="checkbox" />
+  <!-- <div class="collapse">
+    <input type="checkbox" class="peer" />
+    <div class="collapse-title btn">
+      {{ novelData.title }}
+    </div>
+    <div class="collapse-content mt-2">
+      <PageCard :novelData="novelData"></PageCard>
+    </div>
+  </div> -->
+
+  <div tabindex="0" class="collapse group">
     <div class="collapse-title btn">
       {{ novelData.title }}
     </div>

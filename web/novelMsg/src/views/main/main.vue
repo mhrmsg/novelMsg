@@ -3,7 +3,7 @@
     class="flex flex-col w-8/12 space-y-4 m-auto min-h-screen min-w-max pt-10 items-center"
   >
     <NavHeader class="w-full max-h-12 flex-none h-14"></NavHeader>
-    <div class="stack flex-auto pb-20">
+    <div class="stack flex-auto md:p-20 lg:p-20">
       <TransitionGroup name="list">
         <template
           v-for="(item, index) in pageDataRandom"
