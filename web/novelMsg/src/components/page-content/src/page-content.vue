@@ -1,14 +1,14 @@
 <template>
-  <div class="mockup-window border bg-base-300">
+  <div class="mockup-window border bg-base-300 w-10/12 m-auto">
     <!-- 顶部Path展示 -->
     <div class="ml-5">
       <PagePath></PagePath>
     </div>
-    <div class="flex flex-col bg-base-200">
+    <div class="bg-base-200">
       <!-- Item  展示 ，使用 grid 布局-->
-      <div class="grid grid-cols-3 md:grid-cols-3 p-10 gap-4 overflow-hidden">
+      <div class="flex flex-wrap justify-center align-middle p-10">
         <template v-for="item in currentPageData" :key="item._id">
-          <PageItem :data="item"></PageItem>
+          <PageItem :data="item" class="m-2"></PageItem>
         </template>
       </div>
       <!-- 分页 暂时不做-->

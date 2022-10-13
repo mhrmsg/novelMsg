@@ -2,12 +2,18 @@
 
 <template>
   <div class="pagination">
-    <a @click="changePage(false)" href="javascript:;">上一页</a>
+    <a
+      @click="changePage(false)"
+      class="btn btn-outline btn-xs sm:btn-sm"
+      href="javascript:;"
+      >上一页</a
+    >
     <span v-if="currentPage > 3">...</span>
     <a
       @click="changePage(item)"
       href="javascript:;"
       :class="{ active: currentPage === item }"
+      class="btn btn-outline btn-xs sm:btn-sm"
       v-for="item in list"
       :key="item"
       >{{ item }}</a
@@ -16,12 +22,13 @@
     <a
       @click="changePage(true)"
       href="javascript:;"
+      class="btn btn-outline btn-xs sm:btn-sm"
       :class="{ disabled: currentPage === pages }"
       >下一页</a
     >
   </div>
 </template>
-<script>
+<script lang="ts">
 import { computed, ref } from "vue";
 
 export default {
@@ -51,7 +58,7 @@ export default {
     // 当前页码
     // console.log(attrs.page)
     // 如果父组件没有传递档当前页码，默认是第一页
-    const currentPage = ref(attrs.page || 1);
+    const currentPage: any = ref(attrs.page || 1);
     // 动态计算页码列表
     const list = computed(() => {
       // 当父组件传递total的值发生变化时，计算属性会重新计算
@@ -85,7 +92,7 @@ export default {
       return result;
     });
     // 控制上一页和下一页变化
-    const changePage = (type) => {
+    const changePage = (type: any) => {
       if (type === false) {
         // 上一页
         // 页面是第一页时，禁止点击操作
