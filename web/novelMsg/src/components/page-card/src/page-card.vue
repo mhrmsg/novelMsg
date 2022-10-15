@@ -3,11 +3,13 @@
     class="card max-w-sm md:w-96 sm:w-96 lg:w-96 shadow-xl h-full bg-neutral text-neutral-content"
   >
     <figure v-if="showPic" class="mt-2">
-      <img alt="img" class="md:h-40 lg:h-40 md:w-auto" :src="novelData.image" />
+      <img alt="img" class="h-60 md:w-auto" :src="novelData.image" />
     </figure>
     <div class="card-body text-left flex flex-col justify-between">
       <h2 class="card-title">
-        {{ novelData.title }}
+        <a v-bind:href="'http://' + novelData.book_url" target="_blank">
+          {{ novelData.title }}
+        </a>
         <div class="badge badge-secondary h-auto text-center">
           {{ novelData.author }}
         </div>
