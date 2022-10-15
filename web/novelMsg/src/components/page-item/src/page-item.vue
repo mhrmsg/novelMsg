@@ -10,9 +10,20 @@
   </div> -->
 
   <div tabindex="0" class="collapse group">
-    <div class="collapse-title btn">
-      {{ novelData.title }}
+    <div class="flex justify-center align-middle">
+      <div class="flex-initial mt-3">
+        <kbd class="kbd bg-info"> <a href="javascript:void">◀︎</a></kbd>
+      </div>
+      <div class="collapse-title btn flex-initial">
+        <span>{{ novelData.title }}</span>
+      </div>
+      <div class="flex-initial mt-3">
+        <kbd class="kbd bg-info">
+          <a :href="'https://' + novelData.book_url" target="_blank">▶︎</a></kbd
+        >
+      </div>
     </div>
+
     <div class="collapse-content mt-2">
       <PageCard :novelData="novelData"></PageCard>
     </div>

@@ -2,7 +2,7 @@
   <div
     class="card max-w-sm md:w-96 sm:w-96 lg:w-96 shadow-xl h-full bg-neutral text-neutral-content"
   >
-    <figure v-if="showPic">
+    <figure v-if="showPic" class="mt-2">
       <img alt="img" class="md:h-40 lg:h-40 md:w-auto" :src="novelData.image" />
     </figure>
     <div class="card-body text-left flex flex-col justify-between">
@@ -26,6 +26,7 @@
 <script setup lang="ts">
 import { ICard } from "../types/index";
 import { PropType } from "vue";
-const showPic: boolean = false;
+import test from "node:test";
+const showPic: boolean = true;
 const { novelData } = defineProps(["novelData"]);
 </script>

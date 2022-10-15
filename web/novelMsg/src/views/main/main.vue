@@ -15,7 +15,7 @@
       </TransitionGroup>
     </div>
     <div class="m-auto flex-1">
-      <div class="btn-group grid grid-cols-2">
+      <div class="btn-group grid grid-cols-2 mb-5">
         <button class="btn btn-outline prev" @click="prevClick">Prev</button>
         <button class="btn btn-outline next" @click="nextClick">Next</button>
       </div>
